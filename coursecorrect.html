@@ -298,7 +298,71 @@
                     </section>
                     <section id="introduction-to-coursecorrect">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b pb-2" style="border-color: var(--border-color);"><span class="title-accent">2. Introduction to CourseCorrect</span></h2>
-                        <!-- ... Your full original content for Section 2 ... -->
+                        <div class="space-y-6">
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">2.1 What is CourseCorrect?</h3>
+                                <h4 class="text-lg font-medium">Platform Definition and Purpose</h4>
+                                <p class="mb-4"><strong>CourseCorrect</strong> is an AI-powered course matchmaker designed to help ambitious learners find the right upskilling course to move their careers forward. CourseCorrect's AI (called Cora) matches users with the best fit for their specific goals, skills, and experience level. The platform scans over 150,000 courses across platforms like Udemy, Coursera, and EdX, comparing content, reviews, pricing, and skills taught to make personalized recommendations.</p>
+                                <h4 class="text-lg font-medium">Vision and Mission</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong class="font-semibold">Mission:</strong> To simplify course discovery for ambitious learners through comprehensive course aggregation and intuitive AI guidance.</li>
+                                    <li><strong class="font-semibold">Vision:</strong> To help professionals map their entire career path, showing them what to learn, when to learn it, and why it matters, so they can move forward with confidence.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">2.2 Key Features overview (benefits)</h3>
+                                <h4 class="text-lg font-medium">Course Search & Aggregation</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Search functionality that pulls courses from 150,000+ options across multiple platforms.</li>
+                                    <li>Results display up to 20 relevant courses per search query.</li>
+                                </ul>
+                                <h4 class="text-lg font-medium">AI Course Matching (Cora)</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Personalized recommendation system that matches courses to your profile.</li>
+                                    <li>Quick assessment process that generates tailored suggestions in under 2 minutes.</li>
+                                </ul>
+                                <h4 class="text-lg font-medium">Career Outcomes Analysis</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Course listings include skills taught and potential career paths.</li>
+                                    <li>Salary expectations and job role information for each recommended course.</li>
+                                </ul>
+                                <h4 class="text-lg font-medium">Multi-Platform Integration</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Consolidated access to courses from Udemy, Coursera, EdX, and other platforms.</li>
+                                    <li>Comparison tools for pricing, content, and reviews across different providers.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">2.3 Target Audience?</h3>
+                                <p>CourseCorrect is designed for anyone looking to advance their skills and career through online learning:</p>
+                                <h4 class="text-lg font-medium">Career Changers</h4>
+                                <p>People transitioning to new industries or roles who need strategic guidance and courses on skills to develop that will support their career pivot.</p>
+                                <h4 class="text-lg font-medium">Busy Learners</h4>
+                                <p>Users who need efficient course discovery without extensive research. CourseCorrect's AI recommendations reduce the time spent comparing courses and recommended courses across multiple platforms, providing curated options based on your needs and goals.</p>
+                                <h4 class="text-lg font-medium">Students and Lifelong Learners</h4>
+                                <p>Students preparing for career entry and recent graduates who need to identify relevant courses that align with their career goals and enhance their capabilities. This includes both structured learners supplementing formal education and self-directed learners exploring specific interests or hobbies.</p>
+                                <h4 class="text-lg font-medium">Professionals</h4>
+                                <p>Established professionals focused on continuous learning, leadership development, or specialization in emerging areas to maintain career momentum and advancement opportunities.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">2.4 System Requirements</h3>
+                                <h4 class="text-lg font-medium">Supported Browsers</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Chrome (recommended), Firefox, Safari, Edge.</li>
+                                    <li>Any latest versions of browsers are recommended for optimal usage performance.</li>
+                                </ul>
+                                <h4 class="text-lg font-medium">Internet Connection Requirements</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Stable broadband internet connection required.</li>
+                                    <li>Minimum speed fine for course overview and AI interactions (Cora).</li>
+                                </ul>
+                                <h4 class="text-lg font-medium">Device Compatibility</h4>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Accessible on any device with a web browser (desktops, laptops, tablets, smartphones).</li>
+                                    <li>Responsive design adapts to different screen sizes and devices.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                     <section id="getting-started">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b pb-2" style="border-color: var(--border-color);"><span class="title-accent">3. Getting Started</span></h2>
@@ -414,28 +478,31 @@
             const tocListMobile = document.getElementById('toc-list-mobile');
 
             if (tocListDesktop && tocListMobile) {
-                const sections = document.querySelectorAll('main section h2');
+                const sections = document.querySelectorAll('main section');
                 
                 tocListDesktop.innerHTML = '';
                 tocListMobile.innerHTML = '';
 
-                sections.forEach(header => {
-                    const text = header.textContent.trim();
-                    const id = header.parentElement.id;
+                sections.forEach(section => {
+                    const header = section.querySelector('h2');
+                    if (header) {
+                        const text = header.textContent.trim();
+                        const id = section.id;
 
-                    if (id) {
-                         const link = document.createElement('a');
-                        link.href = `#${id}`;
-                        link.textContent = text;
-                        link.className = 'themed-link block py-1';
-                        
-                        const listItemDesktop = document.createElement('li');
-                        listItemDesktop.appendChild(link.cloneNode(true));
-                        tocListDesktop.appendChild(listItemDesktop);
+                        if (id) {
+                            const link = document.createElement('a');
+                            link.href = `#${id}`;
+                            link.textContent = text;
+                            link.className = 'themed-link block py-1';
+                            
+                            const listItemDesktop = document.createElement('li');
+                            listItemDesktop.appendChild(link.cloneNode(true));
+                            tocListDesktop.appendChild(listItemDesktop);
 
-                        const listItemMobile = document.createElement('li');
-                        listItemMobile.appendChild(link.cloneNode(true));
-                        tocListMobile.appendChild(listItemMobile);
+                            const listItemMobile = document.createElement('li');
+                            listItemMobile.appendChild(link.cloneNode(true));
+                            tocListMobile.appendChild(listItemMobile);
+                        }
                     }
                 });
             }
