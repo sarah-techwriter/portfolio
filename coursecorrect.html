@@ -112,7 +112,7 @@
         /* Page-Specific Styles */
         .toc-list-container {
             overflow-y: auto;
-            max-height: calc(100vh - 10rem); /* Adjust based on sticky top position and padding */
+            max-height: calc(100vh - 10rem);
         }
         .toc-list-container::-webkit-scrollbar {
             width: 5px;
@@ -168,7 +168,6 @@
         .faq-box-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem 0; }
         .faq-icon, .faq-sub-icon { transition: transform 0.3s ease-in-out; font-size: 1.5em; font-weight: 300; }
         .faq-content, .faq-sub-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
-        .faq-content.expanded, .faq-sub-content.expanded { max-height: 1000px; }
         .faq-sub-item { border-top: 1px solid var(--border-color); padding: 1rem 0; }
         .faq-sub-item:first-child { border-top: none; padding-top: 0; }
         .faq-sub-item:last-child { padding-bottom: 0; }
@@ -1161,14 +1160,12 @@
         </div>
     </div>
     
-    <!-- Unified Footer from Main Portfolio -->
     <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
             <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Contact Modal -->
     <div id="contact-modal" class="modal-overlay">
         <div class="modal-content relative">
             <button id="close-modal-btn" class="absolute top-2 right-4 text-2xl font-bold opacity-50 hover:opacity-100">&times;</button>
@@ -1283,18 +1280,30 @@
                 header.addEventListener('click', () => {
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.faq-icon');
-                    const isExpanded = content.classList.toggle('expanded');
-                    if (icon) icon.textContent = isExpanded ? '−' : '+';
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        if(icon) icon.textContent = '+';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        if(icon) icon.textContent = '−';
+                    } 
                 });
             });
 
             document.querySelectorAll('.faq-sub-header').forEach(header => {
                 header.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevents the main FAQ box from closing
+                    e.stopPropagation(); 
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.faq-sub-icon');
-                    const isExpanded = content.classList.toggle('expanded');
-                    if (icon) icon.textContent = isExpanded ? '−' : '+';
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        if(icon) icon.textContent = '+';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        if(icon) icon.textContent = '−';
+                    }
                 });
             });
 
