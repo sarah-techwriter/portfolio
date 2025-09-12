@@ -1296,6 +1296,7 @@
                     e.stopPropagation(); 
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.faq-sub-icon');
+                    const parentContent = header.closest('.faq-content');
 
                     if (content.style.maxHeight) {
                         content.style.maxHeight = null;
@@ -1304,6 +1305,12 @@
                         content.style.maxHeight = content.scrollHeight + "px";
                         if(icon) icon.textContent = '−';
                     }
+                    
+                    setTimeout(() => {
+                        if (parentContent && parentContent.style.maxHeight) {
+                            parentContent.style.maxHeight = parentContent.scrollHeight + "px";
+                        }
+                    }, 400);
                 });
             });
 
