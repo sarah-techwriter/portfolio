@@ -385,7 +385,7 @@
                                 <h4 class="text-lg font-medium">Step-by-step registration</h4>
                                 <ol class="list-decimal list-inside space-y-2">
                                     <li>Go to the <a href="https://coursecorrect.fyi/" class="text-blue-600 hover:text-blue-800">official website of CourseCorrect</a></li>
-                                    <li>Click the Google sign-in icon ("<strong class="font-semibold">g</strong>" icon) on the top-right corner of the website.</li>
+                                    <li>Click the Google sign-in icon ("<strong class="font-semibold">g</strong>" icon) on the top-right corner of the website. <span class="text-sm italic">Example Format: [yourname]@[yourschool.edu] or [yourname]@[yourschool.k12.wi.us]</span> <img src="CourseCorrect G icon.PNG" alt="CourseCorrect G icon" class="w-16 h-16 rounded-full inline-block ml-2 align-middle"></li>
                                     <li>Select your Google business or educational account from the authentication page.</li>
                                     <li>Review and accept the agreement allowing CourseCorrect to access your name and email address.</li>
                                     <li>Click "continue" to proceed with account creation.</li>
@@ -394,6 +394,7 @@
                             </div>
                             <div class="space-y-4">
                                 <h3 class="text-xl font-semibold">3.2. Dashboard Overview</h3>
+                                <img src="CourseCorrect Dashboard.PNG" alt="CourseCorrect dashboard" class="w-full rounded-lg mb-4">
                                 <h4 class="text-lg font-medium">Main navigation elements</h4>
                                 <ul class="list-disc list-inside space-y-2">
                                     <li><strong class="font-semibold">Google account icon</strong> (Top-Right)
@@ -661,26 +662,6 @@
                                     <li>Step 7: Save Cora's recommendations for detailed evaluation</li>
                                 </ol>
                             </div>
-                            <div class="space-y-4">
-                                <h3 class="text-xl font-semibold">5.3 Skill Development Workflow</h3>
-                                <h4 class="text-lg font-medium">Identify Needs for Targeted Skills</h4>
-                                <ol class="list-decimal list-inside space-y-2">
-                                    <li>Step 1: Research target industry requirements through "Career Insights"</li>
-                                    <li>Step 2: Consult Cora about transition strategy: "I'm moving from [current field] to [target field], what should I learn?"</li>
-                                    <li>Step 3: Identify transferable skills and knowledge gaps through course comparison.</li>
-                                    <li>Step 4: Prioritize course based on:
-                                        <ul class="list-disc list-inside ml-6">
-                                            <li>Job Roles With highest salary potential</li>
-                                            <li>Requirements that match you</li>
-                                            <li>Growth Potential in the target industry</li>
-                                        </ul>
-                                    </li>
-                                    <li>Step 5: Create a transition timeline based on course time commitment.</li>
-                                    <li>Step 6: Use feedback section to understand real-world application success.</li>
-                                    <li>Step 7: Build portfolio of certificates and skills that demonstrate transition readiness.</li>
-                                    <li>Step 8: Leverage Key Points information to explore alternative into the new career.</li>
-                                </ol>
-                            </div>
                         </div>
                     </section>
                     <section id="frequently-asked-questions" class="space-y-6">
@@ -828,7 +809,7 @@
                                            <p>Yes! You can explore multiple career paths by:</p>
                                             <ul class="list-disc list-inside ml-4 space-y-2">
                                                 <li>Using Cora to explore different career options</li>
-                                                <li>Bookmarking/saving courses manually</li>
+                                                <li>Bookmarking/saved courses manually</li>
                                                 <li>Comparing career options by reviewing the career insights section for each course</li>
                                             </ul>
                                         </div>
@@ -1163,7 +1144,7 @@
                     <hr style="border-color: var(--border-color);">
 
                     <p class="text-sm text-left document-info">
-                        Document Version: 1.0 • Last Updated: August 15, 2025 • Maintained by <a href="index.html" class="hover:underline">sarah-techwriter</a>
+                        Document Version: 1.0 • Last Updated: August 15, 2025 • Maintained by <a href="index.html" class="hover:underline">sarah-tech-writer</a>
                     </p>
                 </div>
             </main>
@@ -1172,7 +1153,7 @@
     
     <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
-            <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
+            <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1239,7 +1220,7 @@
                 mobileMenuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                     menuOpenIcon.classList.toggle('hidden');
-                    menuCloseIcon.classList.toggle('hidden');
+                    menuCloseIcon.classList.add('hidden');
                 });
             }
             
