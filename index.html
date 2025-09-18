@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah | Technical Writer Portfolio</title>
+    <title>Sarah | Technical Writing Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,6 +151,33 @@
             color: var(--hero-accent-color);
             transform: scale(1.1);
         }
+        .cta-button-alt {
+            background-color: var(--hero-accent-color);
+            color: #111111; /* Dark text for contrast on yellow bg */
+            transition: all 0.3s ease;
+        }
+        .cta-button-alt:hover {
+            opacity: 0.9;
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+        }
+
+        /* --- START: MODAL STYLES --- */
+        #contactModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #modalPanel {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #contactModal.hidden #modalPanel {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        #contactModal:not(.hidden) #modalPanel {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* --- END: MODAL STYLES --- */
     </style>
 </head>
 <body class="antialiased">
@@ -165,7 +192,7 @@
                     <div class="hidden md:flex items-center space-x-2">
                         <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="#portfolio" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Portfolio</a>
-                        <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="#ready-to-start" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                         <button id="theme-toggle" class="p-2 rounded-full nav-link">
                             <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                             <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -187,23 +214,23 @@
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
                     <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium">About</a>
                     <a href="#portfolio" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                    <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#ready-to-start" class="nav-link block px-3 py-2 rounded-md text-base font-medium">Contact</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto py-12">
+    <main class="max-w-7xl mx-auto">
 
-        <section class="hero-section flex flex-col items-center justify-center text-center py-20 shadow-lg mb-16 mx-0 sm:mx-6 lg:mx-8 rounded-none sm:rounded-3xl">
+        <section class="hero-section flex flex-col items-center justify-center text-center py-20 shadow-lg mt-16 mb-16 mx-0 sm:mx-6 lg:mx-8 rounded-none sm:rounded-3xl pt-12">
             <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-4 px-4 sm:px-0">
                 Hi, I'm <span class="hero-accent-text">Sarah</span>
             </h1>
             <p class="text-base sm:text-lg md:text-xl font-normal max-w-2xl mx-auto mb-8 opacity-90 px-4 sm:px-0">
-                A technical writer who bridges the gap between complex software and its users. I specialize in creating clear, user-focused documentation for AI platforms and SaaS products, transforming advanced features into actionable guides.
+                I'm a technical writer who specializes in creating clear, user-focused knowledge base articles for SaaS platforms and tech businesses. My approach involves transforming complex software features into accessible documentation that reduces support tickets and improves user success.
             </p>
             <a href="#portfolio" class="cta-button inline-block font-bold text-base md:text-lg py-3 px-8 rounded-full shadow-md">
-                My Project
+                Portfolio
             </a>
         </section>
 
@@ -211,51 +238,50 @@
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-8">About Me</h2>
                 <p class="text-base md:text-lg leading-relaxed mb-12 opacity-80 text-center">
-                    I'm a technical writer who thrives on clarity and user success. As an English graduate drawn to AI and technology, I found my calling in transforming complex technical concepts into accessible, user-focused content. My hands-on approach involves deep platform exploration to deliver comprehensive user guides, process documentation, and implementation strategies.
+                    I'm a technical writer who thrives on clarity and user success. As an English graduate drawn to technology and user experience, I found my calling in transforming complex software into accessible, well-organized help centers. My approach combines strategic information architecture with user-focused writing, ensuring every knowledge base serves a specific purpose in your customer success journey, from setup to advanced feature mastery.
                 </p>
                 <h3 class="text-xl md:text-2xl font-bold mb-8 text-center">Core Skills & Expertise</h3>
                 <div class="max-w-4xl mx-auto text-left space-y-6">
                     <div>
                         <h4 class="font-semibold text-lg mb-2 text-gray-500 dark:text-gray-400">Documentation Specialties</h4>
-                        <p class="opacity-90 leading-relaxed">User Guides <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Process Documentation <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Troubleshooting Guides <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Knowledge Bases <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> How-To Tutorials</p>
+                        <p class="opacity-90 leading-relaxed">Knowledge Base Articles <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Help Center Organization <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> User Onboarding Guides <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> FAQ & Troubleshooting Documentation <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Software Product Manuals <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Step-by-Step Tutorials</p>
                     </div>
                     <div style="border-top: 1px solid var(--border-color);" class="pt-6">
                         <h4 class="font-semibold text-lg mb-2 text-gray-500 dark:text-gray-400">Tools & Technologies</h4>
-                        <p class="opacity-90 leading-relaxed">Markdown <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Git <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> GitHub <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> AI Documentation Tools</p>
+                        <p class="opacity-90 leading-relaxed">Markdown <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Git <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> GitHub <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Notion <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> StackEdit <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> GitBook <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Help Desk Platforms <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Content Management Systems</p>
                     </div>
                     <div style="border-top: 1px solid var(--border-color);" class="pt-6">
                         <h4 class="font-semibold text-lg mb-2 text-gray-500 dark:text-gray-400">Industry Focus Areas</h4>
-                        <p class="opacity-90 leading-relaxed">AI/ML Platforms <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> SaaS Products</p>
+                        <p class="opacity-90 leading-relaxed">SaaS Platforms <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Tech Business <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Software Products <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Customer Support Documentation</p>
                     </div>
                      <div style="border-top: 1px solid var(--border-color);" class="pt-6">
                         <h4 class="font-semibold text-lg mb-2 text-gray-500 dark:text-gray-400">Background</h4>
-                        <p class="opacity-90 leading-relaxed">English Graduate <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Professional Writing</p>
+                        <p class="opacity-90 leading-relaxed">English Graduate <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Professional Writing <span class="font-extrabold text-lg align-middle mx-1">&middot;</span> Knowledge Management</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="portfolio" class="py-16 px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">My Project</h2>
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Portfolio</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="project-card flex flex-col">
                     <img src="https://placehold.co/600x400/A78BFA/ffffff?text=CourseCorrect+User+Guide" alt="CourseCorrect User Guide" class="w-full h-40 object-cover">
                     <div class="p-6 flex flex-col flex-grow text-left">
                         <div>
                             <span class="inline-block status-tag-published text-xs font-semibold px-3 py-1 rounded-full mb-3">Completed & Published</span>
-                            <h3 class="text-lg md:text-xl font-bold mb-2">CourseCorrect User Guide</h3>
+                            <h3 class="text-lg md:text-xl font-bold mb-2">Complete User Guide</h3>
                             <p class="leading-normal text-sm mb-3 opacity-70">
                                 Comprehensive user guide (3000+ words) for an AI-powered course discovery platform. Created through hands-on platform exploration to help users navigate features and achieve their learning goals.
                             </p>
                             <ul class="flex flex-wrap gap-2 text-xs font-medium mb-3">
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">AI/ML Platform</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Technical Documentation</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Information Architecture</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Troubleshooting</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">FAQ Development</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">StackEdit</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Markdown</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">GitHub Pages</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Documentation</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Information Architecture</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Troubleshooting</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">FAQ Development</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">StackEdit</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Markdown</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">How-to Tutorials</li>
                             </ul>
                         </div>
                         <a href="coursecorrect.html" class="themed-link inline-flex items-center font-semibold group mt-auto">
@@ -274,9 +300,10 @@
                                 Curated collection of technical writing projects and documentation samples demonstrating user-focused content creation for complex platforms. This is where I share my work and collaborate on open-source projects.
                             </p>
                             <ul class="flex flex-wrap gap-2 text-xs font-medium mb-3">
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Portfolio Curation</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">Documentation Samples</li>
-                                <li class="rounded-full px-3 py-1" style="background-color: var(--card-tag-bg); color: var(--card-tag-text);">GitHub Pages</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Portfolio Curation</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Documentation Samples</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">GitHub Pages</li>
+                                <li class="rounded-full px-3 py-1" style="background-color: transparent; border: 1px solid var(--border-color); color: var(--card-tag-text);">Open-source Projects</li>
                             </ul>
                         </div>
                         <a href="https://github.com/sarah-techwriter" target="_blank" class="themed-link inline-flex items-center font-semibold group mt-auto">
@@ -288,54 +315,199 @@
             </div>
         </section>
 
-        <section id="contact" class="py-16 px-6 lg:px-8">
-            <div class="max-w-2xl mx-auto text-center p-6 sm:p-10 contact-card rounded-3xl shadow-lg">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Let’s Connect</h2>
-                <p class="text-base md:text-lg font-light opacity-80 mb-8">
-                    I’m open to discussing technical writing, sharing ideas, or collaborating on documentation projects. Whether you’re a developer, a fellow writer, or someone looking for clear docs — let’s connect!
-                </p>
-
-                <div class="flex justify-center space-x-8 text-xl opacity-70 mb-8">
-                    <a href="mailto:sarahtechwriter@gmail.com" class="social-link flex flex-col items-center space-y-2">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-                        <span class="text-sm font-medium">Email</span>
-                    </a>
-                    <a href="https://github.com/sarah-techwriter" target="_blank" class="social-link flex flex-col items-center space-y-2">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.646-.208.646-.465 0-.233-.007-.866-.012-1.697-2.782.604-3.369-1.34-3.369-1.34-.454-1.15-.11-2.001-.11-2.001-.937-.643.07-.629.07-.629 1.036.07 1.583 1.07 1.583 1.07.915 1.572 2.404 1.117 2.98.855.092-.664.359-1.117.653-1.373-2.288-.26-4.697-1.144-4.697-5.097 0-1.124.4-2.042 1.06-2.766-.107-.26-.46-1.303.1-2.723 0 0 .866-.277 2.842 1.057.824-.23 1.698-.344 2.571-.349.873.005 1.747.119 2.571.349 1.975-1.334 2.84-.967 2.84-.967.56 1.42.207 2.463.1 2.723.66 .724 1.059 1.642 1.059 2.766 0 3.963-2.41 4.834-4.706 5.092.37.319.704.947.704 1.916 0 1.38-.012 2.48-.012 2.816 0 .259.168.556.659.458C19.139 20.19 22 16.43 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
-                        <span class="text-sm font-medium">GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/amaliassarah/" target="_blank" class="social-link flex flex-col items-center space-y-2">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.119 2.48 2.5zM.01 7.02L5 7.02V24H.01V7.02zM12.02 6c-1.36 0-2 .57-2 2.01V24H7.01V7.02h2.99s.21-1.57 2.04-1.57c2.14 0 3 1.41 3 4.41V24H18V9.75c0-3.69-2.31-5.49-5.98-5.49z"/></svg>
-                        <span class="text-sm font-medium">LinkedIn</span>
-                    </a>
+        <section id="what-you-get" class="py-16 px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">What You Get</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Immediate Results Column -->
+                    <div class="p-8 rounded-2xl" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Immediate Results</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Publication-Ready Articles</h4>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">User-Friendly Language</h4>
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Strategic Organization</h4>
+                            </li>
+                            <li class="flex items-center">
+                                 <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Mobile-Optimized Formatting</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Long-Term Value Column -->
+                    <div class="p-8 rounded-2xl" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Long-Term Value</h3>
+                        <ul class="space-y-4">
+                             <li class="flex items-center">
+                                 <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Reduced Support Load</h4>
+                            </li>
+                             <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Improved User Onboarding</h4>
+                            </li>
+                             <li class="flex items-center">
+                                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Scalable Documentation System</h4>
+                            </li>
+                             <li class="flex items-center">
+                                 <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <h4 class="font-semibold">Professional Brand Presence</h4>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                 <p class="text-sm font-light italic opacity-60">
-                    Open to technical writing opportunities and documentation collaborations.
-                </p>
+            </div>
+        </section>
 
-                <div class="mt-12">
-                    <h3 class="text-lg md:text-xl font-bold mb-2">Sarah’s Tech Tips Newsletter</h3>
-                     <p class="text-sm md:text-base font-light opacity-70 mb-4">You’ll receive a welcome email with more details once you confirm.</p>
-                    <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                        <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--bg-color); border-color: var(--border-color); color: var(--text-color); --ring-color: var(--primary-accent);">
-                        <button type="submit" class="cta-button inline-block font-bold py-3 px-8 rounded-xl shadow-md">
-                            Get tips
-                        </button>
-                    </form>
-                    <p class="text-sm font-light italic opacity-60 mt-4">
-                        Your information is protected. You can unsubscribe anytime.
-                    </p>
+        <section id="my-process" class="py-16 px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">My Process</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">1</div>
+                        <h4 class="font-semibold text-lg mb-2">Discovery & Analysis</h4>
+                        <p class="opacity-70 text-sm">I start by understanding your users, analyzing existing support tickets, and identifying documentation gaps that cause the most friction.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">2</div>
+                        <h4 class="font-semibold text-lg mb-2">Strategic Planning</h4>
+                        <p class="opacity-70 text-sm">I create an information architecture that mirrors how your users think about problems—not how your product is built internally.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">3</div>
+                        <h4 class="font-semibold text-lg mb-2">Content Creation</h4>
+                        <p class="opacity-70 text-sm">Every article follows proven patterns: clear headlines, scannable formatting, step-by-step instructions, and anticipated edge cases.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mb-4 text-2xl font-bold">4</div>
+                        <h4 class="font-semibold text-lg mb-2">Quality Assurance</h4>
+                        <p class="opacity-70 text-sm">Unlimited revisions until you're completely satisfied. Great documentation is collaborative, I'll work with you until my work match your needs.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <section id="ready-to-start" class="hero-section py-20 px-6 lg:px-8 text-center">
+        <div class="max-w-2xl mx-auto">
+             <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Get Started?</h2>
+            <p class="text-xl md:text-2xl font-semibold mb-6">
+                Let's discuss your documentation challenges first.
+            </p>
+             <p class="text-base md:text-lg leading-relaxed mb-8">
+                I prefer to understand your product, users, and specific pain points before creating any project. Send me details about your platform and documentation needs, let's explore how clear articles can transform your user experience.
+            </p>
+            <div class="mt-12">
+                <h3 class="text-lg md:text-xl font-bold mb-2">Collaboration Immediately</h3>
+                <button type="button" id="openModalBtn" class="cta-button inline-block font-bold py-3 px-8 rounded-xl shadow-md mt-4">
+                    Send Message
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto">
+        <section id="contact" class="py-16 px-6 lg:px-8 pb-12">
+            <div class="max-w-2xl mx-auto text-center p-6 sm:p-10 contact-card rounded-3xl shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Let’s Connect</h2>
+                 <p class="text-base md:text-lg font-light opacity-80 mb-8">
+                    I’m open to discussing technical writing, sharing ideas, or collaborating on documentation projects.
+                 </p>
+                <div class="flex justify-center space-x-8 text-xl opacity-70 mb-8">
+                    <a href="mailto:sarahtechwriter@gmail.com" class="social-link flex flex-col items-center space-y-2">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <span class="text-sm font-medium">Email</span>
+                    </a>
+                    <a href="https://github.com/sarah-techwriter" target="_blank" class="social-link flex flex-col items-center space-y-2">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.475.087.646-.208.646-.465 0-.233-.007-.866-.012-1.697-2.782.604-3.369-1.34-3.369-1.34-.454-1.15-.11-2.001-.11-2.001-.937-.643.07-.629.07-.629 1.036.07 1.583 1.07 1.583 1.07.915 1.572 2.404 1.117 2.98.855.092-.664.359-1.117.653-1.373-2.288-.26-4.697-1.144-4.697-5.097 0-1.124.4-2.042 1.06-2.766-.107-.26-.46-1.303.1-2.723 0 0 .866-.277 2.842 1.057.824-.23 1.698-.344 2.571-.349.873.005 1.747.119 2.571.349 1.975-1.334 2.84-.967 2.84-.967.56 1.42.207 2.463.1 2.723.66 .724 1.059 1.642 1.059 2.766 0 3.963-2.41 4.834-4.706 5.092.37.319.704.947.704 1.916 0 1.38-.012 2.48-.012 2.816 0 .259.168.556.659.458C19.139 20.19 22 16.43 22 12.017 22 6.484 17.522 2 12 2Z" clip-rule="evenodd"></path></svg>
+                        <span class="text-sm font-medium">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/amaliassarah/" target="_blank" class="social-link flex flex-col items-center space-y-2">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.119 2.48 2.5zM.01 7.02L5 7.02V24H.01V7.02zM12.02 6c-1.36 0-2 .57-2 2.01V24H7.01V7.02h2.99s.21-1.57 2.04-1.57c2.14 0 3 1.41 3 4.41V24H18V9.75c0-3.69-2.31-5.49-5.98-5.49z"></path></svg>
+                        <span class="text-sm font-medium">LinkedIn</span>
+                    </a>
+                </div>
+                 <p class="text-sm font-light italic opacity-60">
+                    Open to technical writing opportunities and documentation collaborations.
+                </p>
+            </div>
+        </section>
+    </div>
+
     <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
             <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
         </div>
     </footer>
+    
+    <!-- START: MODAL HTML (Placed at the end of the body) -->
+    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <!-- Modal Panel -->
+        <div id="modalPanel" class="w-full max-w-lg rounded-xl shadow-xl p-8 relative" style="background-color: var(--card-bg);">
+            
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-4 right-4 opacity-60 hover:opacity-100 transition" style="color: var(--text-color);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <h2 class="text-2xl font-bold mb-6" style="color: var(--text-color);">Contact Us</h2>
+
+            <!-- The form action is your specific Formspree link -->
+            <form action="https://formspree.io/f/xyzdqvaj" method="POST" class="space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2 opacity-80" style="color: var(--text-color);">Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="Name" placeholder="your name" required 
+                               class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2" style="background-color: var(--bg-color); border-color: var(--border-color); color: var(--text-color); --tw-ring-color: var(--primary-accent);">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2 opacity-80" style="color: var(--text-color);">E-mail <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="E-mail" placeholder="Your E-mail" required
+                               class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2" style="background-color: var(--bg-color); border-color: var(--border-color); color: var(--text-color); --tw-ring-color: var(--primary-accent);">
+                    </div>
+                </div>
+
+                <!-- Slack/Whatsapp Field -->
+                <div>
+                    <label for="contact_method" class="block text-sm font-medium mb-2 opacity-80" style="color: var(--text-color);">Slack/Whatsapp</label>
+                    <input type="text" id="contact_method" name="Slack_Whatsapp" placeholder="Slack ID or Whatsapp Number"
+                           class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2" style="background-color: var(--bg-color); border-color: var(--border-color); color: var(--text-color); --tw-ring-color: var(--primary-accent);">
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-2 opacity-80" style="color: var(--text-color);">How can I help you? <span class="text-red-500">*</span></label>
+                    <textarea id="message" name="Message" rows="5" placeholder="Type Here..." required
+                              class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2" style="background-color: var(--bg-color); border-color: var(--border-color); color: var(--text-color); --tw-ring-color: var(--primary-accent);"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-right">
+                    <button type="submit" 
+                            class="cta-button inline-block font-bold py-3 px-8 rounded-lg transition duration-300">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END: MODAL HTML -->
+
     <script>
         // --- THEME TOGGLE SCRIPT ---
         const themeToggle = document.getElementById('theme-toggle');
@@ -412,6 +584,27 @@
         });
 
     </script>
+
+    <!-- START: MODAL SCRIPT -->
+    <script>
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const contactModal = document.getElementById('contactModal');
+
+        const openModal = () => contactModal.classList.remove('hidden');
+        const closeModal = () => contactModal.classList.add('hidden');
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        contactModal.addEventListener('click', (event) => {
+            // Close modal if background is clicked
+            if (event.target === contactModal) {
+                closeModal();
+            }
+        });
+    </script>
+    <!-- END: MODAL SCRIPT -->
+
 </body>
 </html>
 
