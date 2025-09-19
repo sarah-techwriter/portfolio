@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseCorrect Troubleshooting</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Unified Theme from Main Portfolio */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --border-color: #E5E7EB;
+            --skill-bg: #e5e7eb;
+            --skill-text: #111111;
+            --tag-bg: #f7f7f7;
+            --tag-text: #4b5563;
+            --link-color: #111111;
+            --link-hover: #facc15;
+            --contact-bg: #F9FAFB;
+            
+            /* Mapped variables for guide page */
+            --table-header-bg: var(--skill-bg);
+            --table-header-text: var(--skill-text);
+            --toc-bg: rgba(249, 250, 251, 0.95);
+            --code-bg: var(--skill-bg);
+            --code-text: var(--skill-text);
+            --secondary-accent: #facc15;
+            --quote-bg: rgba(0,0,0,0.01);
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1a152a;
+            --text-color: #f5f5f5;
+            --card-bg: #2a213f;
+            --nav-bg: rgba(26, 21, 42, 0.8);
+            --border-color: #4b5563;
+            --skill-bg: #4b5563;
+            --skill-text: #f5f5f5;
+            --tag-bg: #4b5563;
+            --tag-text: #f5f5f5;
+            --link-color: #9f7aea;
+            --link-hover: #facc15;
+            --contact-bg: #2a213f;
+            --quote-bg: rgba(255,255,255,0.02);
+            --toc-bg: rgba(42, 33, 63, 0.95);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* General Component Styling */
+        .main-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+        h1, h2, h3, h4, h5, p, span, li, th, td, strong, ul, ol {
+            color: var(--text-color);
+        }
+        .table-bg {
+            background-color: var(--table-header-bg);
+        }
+        .table-bg th {
+            color: var(--table-header-text);
+        }
+        header nav {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-link {
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .nav-link:hover {
+            opacity: 1;
+            color: var(--link-hover);
+            background-color: rgba(129, 140, 248, 0.1);
+        }
+        .themed-link, a {
+            color: var(--link-color);
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-color: rgba(129, 140, 248, 0.2);
+        }
+        .themed-link:hover, a:hover {
+            color: var(--link-hover);
+            text-decoration-color: var(--link-hover);
+        }
+        nav a, nav button {
+            text-decoration: none;
+        }
+        .title-accent {
+             color: #3b82f6;
+        }
+        [data-theme="dark"] .title-accent {
+            color: var(--link-color);
+        }
+        
+        /* Page-Specific Styles */
+        .toc-list-container {
+            overflow-y: auto;
+            max-height: calc(100vh - 10rem); /* Adjust based on sticky top position and padding */
+        }
+        .toc-list-container::-webkit-scrollbar {
+            width: 5px;
+        }
+        .toc-list-container::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        .toc-list-container::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        [data-theme="dark"] .toc-list-container::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        [data-theme="dark"] .toc-list-container::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .toc-link {
+            transition: color 0.2s ease-in-out;
+            text-decoration: none; 
+            font-weight: 400;
+        }
+        .document-info, .document-info a { color: var(--text-color); opacity: 0.6; text-decoration: none; }
+        .document-info a:hover { text-decoration: underline; }
+
+        code {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+        .quote-block {
+            border-left: 4px solid var(--secondary-accent);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--quote-bg);
+        }
+        .quote-block p {
+            opacity: 0.6;
+        }
+        
+        .faq-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .faq-box-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem 0; }
+        .faq-icon, .faq-sub-icon { transition: transform 0.3s ease-in-out; font-size: 1.5em; font-weight: 300; }
+        .faq-content, .faq-sub-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        .faq-sub-item { border-top: 1px solid var(--border-color); padding: 1rem 0; }
+        .faq-sub-item:first-child { border-top: none; padding-top: 0; }
+        .faq-sub-item:last-child { padding-bottom: 0; }
+        .faq-sub-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-sub-content .list-disc, .faq-sub-content .list-decimal { margin-top: 0.75rem; padding-left: 1.5rem; }
+
+        /* Contact Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+
+        #hover-toc-card {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) scale(0.95);
+            transform-origin: top left;
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
+        }
+
+        #hover-toc:hover #hover-toc-card {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+    <div class="flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+            <main class="w-full main-card p-4 md:p-8 rounded-2xl shadow-lg mb-16">
+                <header class="mb-8 border-b pb-4" style="border-color: var(--border-color);">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-left">
+                    <span class="title-accent">CourseCorrect:</span>
+                    <span class="font-semibold italic" style="color: var(--text-color);">Troubleshooting Guide</span>
+                </h1>
+                </header>
+                <div class="space-y-10">
+                    <section id="troubleshooting">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b pb-2" style="border-color: var(--border-color);">Troubleshooting</h2>
+                        <div class="space-y-6">
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">Account Issues</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
+                                        <thead>
+                                            <tr class="table-bg">
+                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y" style="border-color: var(--border-color);">
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Login Failure</td>
+                                                <td class="px-4 py-2 align-top">Google sign-in button not working, authentication fails</td>
+                                                <td class="px-4 py-2 align-top">Personal Google account used, pop-up blocked, multiple accounts</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Ensure using a business/educational Google account</li>
+                                                        <li>Enable pop-ups for CourseCorrect</li>
+                                                        <li>Clear browser cache and cookies</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Unsupported Account</td>
+                                                <td class="px-4 py-2 align-top">"Account type not supported" message appears</td>
+                                                <td class="px-4 py-2 align-top">Using a personal Gmail account instead of a business/educational one</td>
+                                                <td class="px-4 py-2 align-top">Switch to a valid business/educational Google account for login</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Stuck on Permissions</td>
+                                                <td class="px-4 py-2 align-top">Process freezes after clicking "continue" on the permissions screen</td>
+                                                <td class="px-4 py-2 align-top">Declined access permissions, corporate firewall is blocking the connection</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Re-authorize and accept name/email permissions</li>
+                                                        <li>Check corporate firewall settings to allow CourseCorrect</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">Feature Usage Problems</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
+                                        <thead>
+                                            <tr class="table-bg">
+                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y" style="border-color: var(--border-color);">
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Bad Recommendations</td>
+                                                <td class="px-4 py-2 align-top">Cora or search results provide irrelevant course suggestions</td>
+                                                <td class="px-4 py-2 align-top">Vague search terms, overly restrictive filters, unclear conversation with Cora</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Use more specific search keywords</li>
+                                                        <li>Clear filters and re-apply them carefully</li>
+                                                        <li>Give Cora detailed prompts about your goals and background</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">No Search Results</td>
+                                                <td class="px-4 py-2 align-top">The results page is empty or shows "No courses found"</td>
+                                                <td class="px-4 py-2 align-top">Search query is too niche, contains typos, or filters are too specific</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Check your search query for spelling errors</li>
+                                                        <li>Broaden your search terms</li>
+                                                        <li>Remove all filters and try the search again</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Filters Not Applying</td>
+                                                <td class="px-4 py-2 align-top">Results don't change after selecting filters</td>
+                                                <td class="px-4 py-2 align-top">Forgot to click the "Update" button, or a minor browser glitch</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Ensure you click "Update" after making selections</li>
+                                                        <li>Refresh the page and try again</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">Data & Progress Issues</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
+                                        <thead>
+                                            <tr class="table-bg">
+                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y" style="border-color: var(--border-color);">
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Saved Courses Missing</td>
+                                                <td class="px-4 py-2 align-top">Bookmarked courses do not appear in your saved list</td>
+                                                <td class="px-4 py-2 align-top">Not logged in, browser cache issue, or temporary sync error</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Ensure you are logged into your account</li>
+                                                        <li>Log out and log back in to refresh the session</li>
+                                                        <li>Clear your browser's cache</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">Outdated Information</td>
+                                                <td class="px-4 py-2 align-top">Course price or details are different on the provider's website</td>
+                                                <td class="px-4 py-2 align-top">There can be a slight delay in data synchronization from partner platforms</td>
+                                                <td class="px-4 py-2 align-top">Always trust the information on the official course provider's website as the most current source</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-semibold">Performance Issues</h3>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
+                                        <thead>
+                                            <tr class="table-bg">
+                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
+                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y" style="border-color: var(--border-color);">
+                                            <tr>
+                                                <td class="px-4 py-2 align-top font-semibold">General Slowness</td>
+                                                <td class="px-4 py-2 align-top">Platform pages load slowly, search takes a long time to respond</td>
+                                                <td class="px-4 py-2 align-top">High server traffic, slow local internet connection, too many browser tabs open</td>
+                                                <td class="px-4 py-2 align-top">
+                                                    <ol class="list-decimal list-inside space-y-1">
+                                                        <li>Check your internet connection speed</li>
+                                                        <li>Clear your browser cache and close unnecessary tabs</li>
+                                                        <li>Try accessing the platform during off-peak hours</li>
+                                                    </ol>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
+            <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
