@@ -112,7 +112,7 @@
         /* Page-Specific Styles */
         .toc-list-container {
             overflow-y: auto;
-            max-height: calc(100vh - 10rem); /* Adjust based on sticky top position and padding */
+            max-height: calc(100vh - 10rem);
         }
         .toc-list-container::-webkit-scrollbar {
             width: 5px;
@@ -195,7 +195,6 @@
             max-width: 400px;
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
-
         #hover-toc-card {
             opacity: 0;
             visibility: hidden;
@@ -212,6 +211,46 @@
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
+    <!-- Unified Header from Main Portfolio -->
+    <header class="sticky top-0 z-50">
+        <nav>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex-shrink-0">
+                        <a href="index.html" class="text-2xl font-bold" style="color: var(--text-color);">sarah-techwriter</a>
+                    </div>
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-2">
+                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <button id="contact-btn" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</button>
+                        <button id="theme-toggle" class="p-2 rounded-full nav-link transition-colors">
+                            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        </button>
+                    </div>
+                    <!-- Mobile Navigation Controls -->
+                    <div class="md:hidden flex items-center">
+                        <button id="theme-toggle-mobile" class="p-2 rounded-full nav-link transition-colors">
+                            <svg id="moon-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                            <svg id="sun-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        </button>
+                        <button id="mobile-menu-button" class="ml-2 p-2 rounded-md nav-link">
+                             <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h16" /></svg>
+                             <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="nav-link block px-3 py-2 text-base">Home</a>
+                    <button id="contact-btn-mobile" class="nav-link block w-full text-left px-3 py-2 text-base">Contact</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
     <div class="flex-grow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
             <main class="w-full main-card p-4 md:p-8 rounded-2xl shadow-lg mb-16">
@@ -223,7 +262,6 @@
                 </header>
                 <div class="space-y-10">
                     <section id="troubleshooting">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b pb-2" style="border-color: var(--border-color);">Troubleshooting</h2>
                         <div class="space-y-6">
                             <div class="space-y-4">
                                 <h3 class="text-xl font-semibold">Account Issues</h3>
@@ -399,5 +437,98 @@
             <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content relative">
+            <button id="close-modal-btn" class="absolute top-2 right-4 text-2xl font-bold opacity-50 hover:opacity-100">&times;</button>
+            <h3 class="text-xl font-bold mb-2">Contact Me</h3>
+            <p class="mb-4">You can reach me via email by clicking the button below.</p>
+            <a href="mailto:sarahtechwriter@gmail.com" id="send-email-btn" class="inline-block w-full px-4 py-3 rounded-lg font-semibold transition-colors" style="background-color: var(--link-color); color: var(--bg-color); text-decoration: none;">
+                Send Email to the Writer
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // THEME TOGGLE SCRIPT
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const sunIconMobile = document.getElementById('sun-icon-mobile');
+            const moonIconMobile = document.getElementById('moon-icon-mobile');
+            const htmlEl = document.documentElement;
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    htmlEl.setAttribute('data-theme', 'dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                    sunIconMobile.classList.remove('hidden');
+                    moonIconMobile.classList.add('hidden');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlEl.setAttribute('data-theme', 'light');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                    sunIconMobile.classList.add('hidden');
+                    moonIconMobile.classList.remove('hidden');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            setTheme(savedTheme);
+
+            const themeToggleHandler = () => {
+                const currentTheme = htmlEl.getAttribute('data-theme');
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            };
+
+            if (themeToggle) themeToggle.addEventListener('click', themeToggleHandler);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', themeToggleHandler);
+
+            // MOBILE MENU SCRIPT
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuOpenIcon.classList.toggle('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                });
+            }
+            
+            document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu) mobileMenu.classList.add('hidden');
+                    if (menuOpenIcon) menuOpenIcon.classList.remove('hidden');
+                    if (menuCloseIcon) menuCloseIcon.classList.add('hidden');
+                });
+            });
+            
+            // CONTACT MODAL SCRIPT
+            const contactModal = document.getElementById('contact-modal');
+            const contactBtn = document.getElementById('contact-btn');
+            const contactBtnMobile = document.getElementById('contact-btn-mobile');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            function openModal() { if(contactModal) contactModal.classList.add('active'); }
+            function closeModal() { if(contactModal) contactModal.classList.remove('active'); }
+
+            if(contactBtn) contactBtn.addEventListener('click', openModal);
+            if(contactBtnMobile) contactBtnMobile.addEventListener('click', openModal);
+            if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+            if(contactModal) contactModal.addEventListener('click', (e) => {
+                if (e.target === contactModal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
