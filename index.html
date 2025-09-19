@@ -509,7 +509,7 @@
 
     <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
-            <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
+            <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
         </div>
     </footer>
     
@@ -606,16 +606,8 @@
             }
         }
 
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else if (prefersDark) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        setTheme(savedTheme);
 
         const themeToggleHandler = () => {
             const currentTheme = htmlEl.getAttribute('data-theme');
