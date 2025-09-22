@@ -1,534 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CourseCorrect Troubleshooting</title>
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* Unified Theme from Main Portfolio */
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --card-bg: #ffffff;
-            --nav-bg: rgba(255, 255, 255, 0.8);
-            --border-color: #E5E7EB;
-            --skill-bg: #e5e7eb;
-            --skill-text: #111111;
-            --tag-bg: #f7f7f7;
-            --tag-text: #4b5563;
-            --link-color: #111111;
-            --link-hover: #facc15;
-            --contact-bg: #F9FAFB;
-            
-            /* Mapped variables for guide page */
-            --table-header-bg: var(--skill-bg);
-            --table-header-text: var(--skill-text);
-            --toc-bg: rgba(249, 250, 251, 0.95);
-            --code-bg: var(--skill-bg);
-            --code-text: var(--skill-text);
-            --secondary-accent: #facc15;
-            --quote-bg: rgba(0,0,0,0.01);
+        html {
+            scroll-behavior: smooth;
         }
-        
-        [data-theme="dark"] {
-            --bg-color: #1a152a;
-            --text-color: #f5f5f5;
-            --card-bg: #2a213f;
-            --nav-bg: rgba(26, 21, 42, 0.8);
-            --border-color: #4b5563;
-            --skill-bg: #4b5563;
-            --skill-text: #f5f5f5;
-            --tag-bg: #4b5563;
-            --tag-text: #f5f5f5;
-            --link-color: #9f7aea;
-            --link-hover: #facc15;
-            --contact-bg: #2a213f;
-            --quote-bg: rgba(255,255,255,0.02);
-            --toc-bg: rgba(42, 33, 63, 0.95);
-        }
-        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #ffffff;
+            color: #111111;
         }
-        
-        /* General Component Styling */
-        .main-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-        }
-        h1, h2, h3, h4, h5, p, span, li, th, td, strong, ul, ol {
-            color: var(--text-color);
-        }
-        .table-bg {
-            background-color: var(--table-header-bg);
-        }
-        .table-bg th {
-            color: var(--table-header-text);
-        }
-        header nav {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            background-color: var(--nav-bg);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .nav-link {
-            color: var(--text-color);
-            opacity: 0.7;
-        }
-        .nav-link:hover {
-            opacity: 1;
-            color: var(--link-hover);
-            background-color: rgba(129, 140, 248, 0.1);
-        }
-        .themed-link, a {
-            color: var(--link-color);
-            font-weight: 500;
-            text-decoration: underline;
-            text-decoration-color: rgba(129, 140, 248, 0.2);
-        }
-        .themed-link:hover, a:hover {
-            color: var(--link-hover);
-            text-decoration-color: var(--link-hover);
-        }
-        nav a, nav button {
-            text-decoration: none;
-        }
-        .title-accent {
-             color: #3b82f6;
-        }
-        [data-theme="dark"] .title-accent {
-            color: var(--link-color);
-        }
-        
-        /* Page-Specific Styles */
-        .toc-list-container {
-            overflow-y: auto;
-            max-height: calc(100vh - 10rem);
-        }
-        .toc-list-container::-webkit-scrollbar {
-            width: 5px;
-        }
-        .toc-list-container::-webkit-scrollbar-track {
-            background-color: rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-        }
-        .toc-list-container::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-        }
-        [data-theme="dark"] .toc-list-container::-webkit-scrollbar-track {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        [data-theme="dark"] .toc-list-container::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .toc-link {
-            transition: color 0.2s ease-in-out;
-            text-decoration: none; 
-            font-weight: 400;
-        }
-        .document-info, .document-info a { color: var(--text-color); opacity: 0.6; text-decoration: none; }
-        .document-info a:hover { text-decoration: underline; }
-
-        code {
-            background-color: var(--code-bg);
-            color: var(--code-text);
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: 600;
-        }
-        .quote-block {
-            border-left: 4px solid var(--secondary-accent);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            background-color: var(--quote-bg);
-        }
-        .quote-block p {
-            opacity: 0.6;
-        }
-        
-        .faq-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 0.5rem 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .faq-box-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem 0; }
-        .faq-icon, .faq-sub-icon { transition: transform 0.3s ease-in-out; font-size: 1.5em; font-weight: 300; }
-        .faq-content, .faq-sub-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
-        .faq-sub-item { border-top: 1px solid var(--border-color); padding: 1rem 0; }
-        .faq-sub-item:first-child { border-top: none; padding-top: 0; }
-        .faq-sub-item:last-child { padding-bottom: 0; }
-        .faq-sub-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .faq-sub-content .list-disc, .faq-sub-content .list-decimal { margin-top: 0.75rem; padding-left: 1.5rem; }
-
-        /* Contact Modal Styles */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.5);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            z-index: 100;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-        }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        #hover-toc-card {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px) scale(0.95);
-            transform-origin: top left;
-            transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
-        }
-
-        #hover-toc:hover #hover-toc-card {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
+        .font-serif-display {
+            font-family: 'Merriweather', serif;
         }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen">
-    <!-- Unified Header from Main Portfolio -->
-    <header class="sticky top-0 z-50">
-        <nav>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex-shrink-0">
-                        <a href="index.html" class="text-2xl font-bold" style="color: var(--text-color);">sarah-techwriter</a>
-                    </div>
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-2">
-                        <a href="index.html" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <button id="contact-btn" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</button>
-                        <button id="theme-toggle" class="p-2 rounded-full nav-link transition-colors">
-                            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        </button>
-                    </div>
-                    <!-- Mobile Navigation Controls -->
-                    <div class="md:hidden flex items-center">
-                        <button id="theme-toggle-mobile" class="p-2 rounded-full nav-link transition-colors">
-                            <svg id="moon-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                            <svg id="sun-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        </button>
-                        <button id="mobile-menu-button" class="ml-2 p-2 rounded-md nav-link">
-                             <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h16" /></svg>
-                             <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
-                    </div>
-                </div>
+<body class="bg-white text-gray-900 min-h-screen">
+    
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 md:px-8 border-b border-gray-200">
+            <a href="index.html" class="text-2xl font-extrabold tracking-widest">sarah-techwriter</a>
+            <div class="hidden sm:flex items-center space-x-6 text-sm font-medium text-gray-500 uppercase tracking-wider">
+                <a href="index.html" class="hover:text-gray-900 transition-colors">Home</a>
             </div>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="index.html" class="nav-link block px-3 py-2 text-base">Home</a>
-                    <button id="contact-btn-mobile" class="nav-link block w-full text-left px-3 py-2 text-base">Contact</button>
-                </div>
+            <div class="flex items-center space-x-4">
+                <a href="#get-started" class="inline-block px-4 py-2 border border-gray-900 text-gray-900 font-medium hover:bg-black hover:text-white transition-colors">
+                    Collaboration
+                </a>
             </div>
         </nav>
     </header>
-    
-    <div class="flex-grow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-            <main class="w-full main-card p-4 md:p-8 rounded-2xl shadow-lg mb-16">
-                <header class="mb-8 border-b pb-4" style="border-color: var(--border-color);">
-                    <h1 class="text-3xl sm:text-4xl font-bold text-left">
-                    <span class="title-accent">CourseCorrect:</span>
-                    <span class="font-semibold italic" style="color: var(--text-color);">Troubleshooting Guide</span>
-                </h1>
-                </header>
-                <div class="space-y-10">
-                    <section id="troubleshooting">
-                        <div class="space-y-6">
-                            <div class="space-y-4">
-                                <h3 class="text-xl font-semibold">Account Issues</h3>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
-                                        <thead>
-                                            <tr class="table-bg">
-                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y" style="border-color: var(--border-color);">
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Login Failure</td>
-                                                <td class="px-4 py-2 align-top">Google sign-in button not working, authentication fails</td>
-                                                <td class="px-4 py-2 align-top">Personal Google account used, pop-up blocked, multiple accounts</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Ensure using a business/educational Google account</li>
-                                                        <li>Enable pop-ups for CourseCorrect</li>
-                                                        <li>Clear browser cache and cookies</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Unsupported Account</td>
-                                                <td class="px-4 py-2 align-top">"Account type not supported" message appears</td>
-                                                <td class="px-4 py-2 align-top">Using a personal Gmail account instead of a business/educational one</td>
-                                                <td class="px-4 py-2 align-top">Switch to a valid business/educational Google account for login</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Stuck on Permissions</td>
-                                                <td class="px-4 py-2 align-top">Process freezes after clicking "continue" on the permissions screen</td>
-                                                <td class="px-4 py-2 align-top">Declined access permissions, corporate firewall is blocking the connection</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Re-authorize and accept name/email permissions</li>
-                                                        <li>Check corporate firewall settings to allow CourseCorrect</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-xl font-semibold">Feature Usage Problems</h3>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
-                                        <thead>
-                                            <tr class="table-bg">
-                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y" style="border-color: var(--border-color);">
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Bad Recommendations</td>
-                                                <td class="px-4 py-2 align-top">Cora or search results provide irrelevant course suggestions</td>
-                                                <td class="px-4 py-2 align-top">Vague search terms, overly restrictive filters, unclear conversation with Cora</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Use more specific search keywords</li>
-                                                        <li>Clear filters and re-apply them carefully</li>
-                                                        <li>Give Cora detailed prompts about your goals and background</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">No Search Results</td>
-                                                <td class="px-4 py-2 align-top">The results page is empty or shows "No courses found"</td>
-                                                <td class="px-4 py-2 align-top">Search query is too niche, contains typos, or filters are too specific</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Check your search query for spelling errors</li>
-                                                        <li>Broaden your search terms</li>
-                                                        <li>Remove all filters and try the search again</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Filters Not Applying</td>
-                                                <td class="px-4 py-2 align-top">Results don't change after selecting filters</td>
-                                                <td class="px-4 py-2 align-top">Forgot to click the "Update" button, or a minor browser glitch</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Ensure you click "Update" after making selections</li>
-                                                        <li>Refresh the page and try again</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-xl font-semibold">Data & Progress Issues</h3>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
-                                        <thead>
-                                            <tr class="table-bg">
-                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y" style="border-color: var(--border-color);">
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Saved Courses Missing</td>
-                                                <td class="px-4 py-2 align-top">Bookmarked courses do not appear in your saved list</td>
-                                                <td class="px-4 py-2 align-top">Not logged in, browser cache issue, or temporary sync error</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Ensure you are logged into your account</li>
-                                                        <li>Log out and log back in to refresh the session</li>
-                                                        <li>Clear your browser's cache</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">Outdated Information</td>
-                                                <td class="px-4 py-2 align-top">Course price or details are different on the provider's website</td>
-                                                <td class="px-4 py-2 align-top">There can be a slight delay in data synchronization from partner platforms</td>
-                                                <td class="px-4 py-2 align-top">Always trust the information on the official course provider's website as the most current source</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-xl font-semibold">Performance Issues</h3>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full table-auto text-sm rounded-lg overflow-hidden shadow-md">
-                                        <thead>
-                                            <tr class="table-bg">
-                                                <th class="px-4 py-2 text-left font-semibold">Problem</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Symptom(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Possible Cause(s)</th>
-                                                <th class="px-4 py-2 text-left font-semibold">Solution(s)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y" style="border-color: var(--border-color);">
-                                            <tr>
-                                                <td class="px-4 py-2 align-top font-semibold">General Slowness</td>
-                                                <td class="px-4 py-2 align-top">Platform pages load slowly, search takes a long time to respond</td>
-                                                <td class="px-4 py-2 align-top">High server traffic, slow local internet connection, too many browser tabs open</td>
-                                                <td class="px-4 py-2 align-top">
-                                                    <ol class="list-decimal list-inside space-y-1">
-                                                        <li>Check your internet connection speed</li>
-                                                        <li>Clear your browser cache and close unnecessary tabs</li>
-                                                        <li>Try accessing the platform during off-peak hours</li>
-                                                    </ol>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+
+    <div class="max-w-7xl mx-auto p-4 md:p-8 pt-48">
+        <header class="mt-24 mb-12">
+            <h1 class="font-serif-display text-4xl md:text-5xl font-bold leading-tight mb-2">CourseCorrect Troubleshooting</h1>
+        </header>
+
+        <section class="space-y-12 mb-20">
+            <!-- Account Issues -->
+            <div class="border-t border-gray-200 pt-8">
+                <h2 class="font-serif-display text-2xl font-bold mb-6">Account Issues</h2>
+                <h3 class="font-serif-display text-xl font-bold mb-4">Login Problems</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto">
+                        <thead class="bg-white">
+                            <tr>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Symptoms</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Possible Cause</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Solution</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Prevention</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">Google sign-in button not working, authentication fails</td>
+                                <td class="py-3 px-4 text-gray-800">Personal Google account used, pop-up blocked, multiple accounts</td>
+                                <td class="py-3 px-4 text-gray-800">1. Ensure using business/educational Google account <br> 2. Enable pop-ups <br> 3. Clear browser cache</td>
+                                <td class="py-3 px-4 text-gray-800">Use business Google account, whitelist CourseCorrect domain</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">"Account type not supported" message</td>
+                                <td class="py-3 px-4 text-gray-800">Using personal Gmail account</td>
+                                <td class="py-3 px-4 text-gray-800">Switch to business/educational Google account</td>
+                                <td class="py-3 px-4 text-gray-800">Verify account type before attempting login</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">Stuck after clicking "continue"</td>
+                                <td class="py-3 px-4 text-gray-800">Process freezes after clicking "continue" on the permissions screen</td>
+                                <td class="py-3 px-4 text-gray-800">Declinced access permissions, firewall blocking</td>
+                                <td class="py-3 px-4 text-gray-800">1. Re-authorize CourseCorrect access<br>2. Accept name.email permissions<br>3. Check corporate firewall settings</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </main>
-        </div>
+            </div>
+
+            <!-- Data & Progress Issues -->
+            <div class="border-t border-gray-200 pt-8">
+                <h2 class="font-serif-display text-2xl font-bold mb-6">Data & Progress Issues</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto">
+                        <thead class="bg-white">
+                            <tr>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Problem</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Symptoms</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Possible Causes</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Solutions</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Prevention</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">Incorrect Recommendation</td>
+                                <td class="py-3 px-4 text-gray-800">Irrelevant course suggestions</td>
+                                <td class="py-3 px-4 text-gray-800">Vague search terms, poor filtering, unclear conversations with Cora AI</td>
+                                <td class="py-3 px-4 text-gray-800">1. Try different filter combinations that matched your specific needs <br> 2. Ask Cora AI for personalized recommendations <br> 3.Use clear, specific prompts that match your neeeds <br> 4. Be detailed about your goals</td>
+                                <td class="py-3 px-4 text-gray-800">Use specific search terms and previously discuss with Cora AI</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">No search results</td>
+                                <td class="py-3 px-4 text-gray-800">Empty results page, "No courses found"</td>
+                                <td class="py-3 px-4 text-gray-800">Overly specific filters, typos in search terms, unsupported topics</td>
+                                <td class="py-3 px-4 text-gray-800">1. Clear all filters and retry<br>2. Check spelling of search terms<br> 3. Try borader, more general topic/keywords</td>
+                                <td class="py-3 px-4 text-gray-800">Start with general terms or related topic course</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Performance Issues -->
+            <div class="border-t border-gray-200 pt-8">
+                <h2 class="font-serif-display text-2xl font-bold mb-6">Performance Issues</h2>
+                <h3 class="font-serif-display text-xl font-bold mb-4">General Slowness</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto">
+                        <thead class="bg-white">
+                            <tr>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Problem</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Symptoms</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Possible Causes</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Solutions</th>
+                                <th class="py-3 px-4 font-semibold text-gray-600 uppercase tracking-wide">Prevention</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-4 text-gray-800">General slowness</td>
+                                <td class="py-3 px-4 text-gray-800">Platform responds slowly</td>
+                                <td class="py-3 px-4 text-gray-800">High traffic, local connection, unclear browser cache, old processor and spam device</td>
+                                <td class="py-3 px-4 text-gray-800">1. Try different times <br> 2. Check internet connection <br> 3. Try a different browser or device <br> clear browser tab and cache</td>
+                                <td class="py-3 px-4 text-gray-800">Use during off-peak hours, check browser cache, clear browser tab</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
-    
-    <footer style="background-color: var(--contact-bg); border-top: 1px solid var(--border-color);">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center opacity-60 text-sm">
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8">
+            <div class="lg:pl-12 text-left">
+                <h2 class="font-serif-display text-4xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-base md:text-lg mb-6 leading-relaxed">
+                    I’m open to discussing technical writing, sharing ideas, or collaborating on documentation projects.
+                </p>
+                <div class="flex items-center space-x-4 text-sm md:text-base">
+                    <a href="mailto:sarah@techwriter.com" class="flex items-center hover:underline">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="flex items-center hover:underline">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="flex items-center hover:underline">
+                        <i class="fab fa-linkedin-in mr-2"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+                <p class="mt-8 italic text-sm">
+                    Open to technical writing opportunities and documentation collaborations.
+                </p>
+            </div>
+            
+            <div id="get-started" class="lg:border-l border-gray-700 pb-8 lg:pb-0 lg:pl-12 text-left">
+                <h2 class="font-serif-display text-4xl font-bold mb-4">Ready to Get Started?</h2>
+                <p class="text-base md:text-lg mb-6 leading-relaxed">
+                    Let's discuss your documentation challenges first. I prefer to understand your product, users, and specific pain points before creating any project. Send me details about your platform and documentation needs, let's explore how clear articles can transform your user experience.
+                </p>
+                <h3 class="font-bold mb-4 uppercase text-sm tracking-wide">Collaboration Immediately</h3>
+                <a href="#" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold hover:bg-gray-200 transition-colors">
+                    Send Message
+                </a>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 mt-12 mb-4 text-left text-xs text-gray-500">
             <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content relative">
-            <button id="close-modal-btn" class="absolute top-2 right-4 text-2xl font-bold opacity-50 hover:opacity-100">&times;</button>
-            <h3 class="text-xl font-bold mb-2">Contact Me</h3>
-            <p class="mb-4">You can reach me via email by clicking the button below.</p>
-            <a href="mailto:sarahtechwriter@gmail.com" id="send-email-btn" class="inline-block w-full px-4 py-3 rounded-lg font-semibold transition-colors" style="background-color: var(--link-color); color: var(--bg-color); text-decoration: none;">
-                Send Email to the Writer
-            </a>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // THEME TOGGLE SCRIPT
-            const themeToggle = document.getElementById('theme-toggle');
-            const sunIcon = document.getElementById('sun-icon');
-            const moonIcon = document.getElementById('moon-icon');
-            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-            const sunIconMobile = document.getElementById('sun-icon-mobile');
-            const moonIconMobile = document.getElementById('moon-icon-mobile');
-            const htmlEl = document.documentElement;
-
-            function setTheme(theme) {
-                if (theme === 'dark') {
-                    htmlEl.setAttribute('data-theme', 'dark');
-                    sunIcon.classList.remove('hidden');
-                    moonIcon.classList.add('hidden');
-                    sunIconMobile.classList.remove('hidden');
-                    moonIconMobile.classList.add('hidden');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    htmlEl.setAttribute('data-theme', 'light');
-                    sunIcon.classList.add('hidden');
-                    moonIcon.classList.remove('hidden');
-                    sunIconMobile.classList.add('hidden');
-                    moonIconMobile.classList.remove('hidden');
-                    localStorage.setItem('theme', 'light');
-                }
-            }
-
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            setTheme(savedTheme);
-
-            const themeToggleHandler = () => {
-                const currentTheme = htmlEl.getAttribute('data-theme');
-                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-            };
-
-            if (themeToggle) themeToggle.addEventListener('click', themeToggleHandler);
-            if (themeToggleMobile) themeToggleMobile.addEventListener('click', themeToggleHandler);
-
-            // MOBILE MENU SCRIPT
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-open-icon');
-            const menuCloseIcon = document.getElementById('menu-close-icon');
-
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    menuOpenIcon.classList.toggle('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                });
-            }
-            
-            document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu) mobileMenu.classList.add('hidden');
-                    if (menuOpenIcon) menuOpenIcon.classList.remove('hidden');
-                    if (menuCloseIcon) menuCloseIcon.classList.add('hidden');
-                });
-            });
-            
-            // CONTACT MODAL SCRIPT
-            const contactModal = document.getElementById('contact-modal');
-            const contactBtn = document.getElementById('contact-btn');
-            const contactBtnMobile = document.getElementById('contact-btn-mobile');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-
-            function openModal() { if(contactModal) contactModal.classList.add('active'); }
-            function closeModal() { if(contactModal) contactModal.classList.remove('active'); }
-
-            if(contactBtn) contactBtn.addEventListener('click', openModal);
-            if(contactBtnMobile) contactBtnMobile.addEventListener('click', openModal);
-            if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-            if(contactModal) contactModal.addEventListener('click', (e) => {
-                if (e.target === contactModal) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
