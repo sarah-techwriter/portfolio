@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         html {
@@ -19,6 +19,22 @@
         .font-serif-display {
             font-family: 'Merriweather', serif;
         }
+        /* --- START: MODAL STYLES --- */
+        #contactModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #modalPanel {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #contactModal.hidden #modalPanel {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        #contactModal:not(.hidden) #modalPanel {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* --- END: MODAL STYLES --- */
     </style>
 </head>
 <body class="bg-white text-gray-900 min-h-screen">
@@ -30,7 +46,7 @@
                 <a href="#" class="text-2xl font-extrabold tracking-widest">sarah-techwriter</a>
                 <div class="hidden sm:flex space-x-6 text-sm font-medium text-gray-500 uppercase tracking-wider">
                     <a href="#featured-work" class="hover:text-gray-900 transition-colors">Technical Documentation</a>
-                    <a href="#featured-work" class="hover:text-gray-900 transition-colors">Technology Content</a>
+                    <a href="#technology-content" class="hover:text-gray-900 transition-colors">Technology Content</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="#get-started" class="inline-block px-4 py-2 border border-gray-900 text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors">
@@ -45,19 +61,10 @@
             <h2 class="text-xl md:text-2xl font-medium max-w-xl mb-6">
                 A technical writer specializing in creating comprehensive knowledge bases for SaaS platforms and tech startups. I transform complex software into clear, searchable help centers that reduce support tickets and improve user success.
             </h2>
-            <a href="#" class="inline-block px-6 py-3 bg-gray-900 text-white font-medium hover:bg-gray-700 transition-colors">
-                Portfolio
+            <a href="#featured-work" class="inline-block px-6 py-3 bg-gray-900 text-white font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                Featured Work
             </a>
         </section>
-
-        <section class="mb-20 text-left">
-            <h2 class="font-serif-display text-3xl font-bold mb-4">About Me</h2>
-            <p class="text-lg text-gray-800 leading-relaxed max-w-2xl">
-                I specialize in strategic knowledge management that reduces support load and accelerates user adoption. With a background in user-focused writing and information architecture, I build help centers that don't just answer questions—they empower users to succeed on their own. My approach combines strategic information architecture with user-focused writing, ensuring every knowledge base serves a specific purpose in your customer success journey, from setup to advanced feature mastery.
-            </p>
-        </section>
-
-        <hr class="border-gray-200 my-12" />
 
         <section class="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
@@ -82,7 +89,7 @@
                 <div class="flex flex-wrap gap-2 text-xs">
                     <span class="bg-gray-100 px-3 py-1 rounded">Notion</span>
                     <span class="bg-gray-100 px-3 py-1 rounded">Confluence</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded">Nuclino</span>
+                    <span class="bg-gray-100 px-2 py-1 rounded">Nuclino</span>
                 </div>
                 <h4 class="font-semibold text-sm mt-4 mb-2">Developer Docs</h4>
                 <div class="flex flex-wrap gap-2 text-xs">
@@ -120,7 +127,7 @@
         <section class="mb-20">
             <h2 class="font-serif-display text-3xl font-bold mb-8 text-center">My Process</h2>
             <div class="relative max-w-2xl mx-auto">
-                <div class="absolute inset-0 left-5 md:left-7 w-px bg-gray-200"></div>
+                <div class="absolute inset-0 left-5 w-px bg-gray-200"></div>
                 <div class="flex space-x-4 mb-8">
                     <div class="relative z-10 w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-900 rounded-full flex-shrink-0">
                         <span class="font-bold text-lg">1</span>
@@ -162,62 +169,8 @@
 
         <hr class="border-gray-200 my-12" />
 
-        <section class="mb-20 text-center">
-            <h2 class="font-serif-display text-3xl font-bold mb-8">Collaborating with me? This is what you will get</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left relative lg:before:block before:absolute before:left-1/2 before:-translate-x-1/2 before:h-full before:w-px before:bg-gray-200 before:hidden">
-                <div class="lg:pr-8">
-                    <h3 class="font-serif-display text-xl font-bold mb-4">Immediate Results</h3>
-                    <ul class="space-y-6">
-                        <li>
-                            <h4 class="font-semibold text-sm">SEO & Discoverability</h4>
-                            <p class="text-xs text-gray-600">Articles are written with SEO best practices (descriptive titles, structured headings, and keywords) to rank higher in search results.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Seamlessly Published Content</h4>
-                            <p class="text-xs text-gray-600">Polished, professional content that is ready for immediate publication.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Clear, Accessible Language</h4>
-                            <p class="text-xs text-gray-600">My writing is user-focused and easy to understand, even for complex topics.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Intuitive Information Architecture</h4>
-                            <p class="text-xs text-gray-600">A logical, well-organized structure that simplifies navigation and guides users.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:pl-8 mt-12 lg:mt-0">
-                    <h3 class="font-serif-display text-xl font-bold mb-4">Long-Term Value</h3>
-                    <ul class="space-y-6">
-                        <li>
-                            <h4 class="font-semibold text-sm">Reduced Support Load</h4>
-                            <p class="text-xs text-gray-600">A comprehensive knowledge base that enables self-service, reducing inbound support tickets and freeing up your team.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Accelerated User Adoption</h4>
-                            <p class="text-xs text-gray-600">Improved user onboarding through targeted guides that boost product adoption.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Increased Ticket Deflection</h4>
-                            <p class="text-xs text-gray-600">Empowering users to find answers instantly, reducing the need to contact support.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Actionable Content Insights</h4>
-                            <p class="text-xs text-gray-600">Your work is backed by data. I can identify content gaps based on user search queries and article performance.</p>
-                        </li>
-                        <li>
-                            <h4 class="font-semibold text-sm">Increased Organic Traffic</h4>
-                            <p class="text-xs text-gray-600">A well-optimized knowledge base not only serves existing customers but also attracts new users to your site from search engines.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-gray-200 my-12" />
-
-        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div id="featured-work" class="bg-white overflow-hidden border-b border-gray-200 lg:border-none lg:pb-0 pb-8 space-y-12">
+        <main class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div id="featured-work" class="lg:col-span-3 bg-white overflow-hidden border-b border-gray-200 lg:border-none lg:pb-0 pb-8 space-y-12">
                 <h1 class="font-serif-display text-3xl font-bold mb-4">Featured Work</h1>
                 <p class="text-lg text-gray-800 leading-relaxed mb-8">Here is a curated collection of my work. This section includes live knowledge bases, documentation samples, and case studies that demonstrate my ability to transform complex information into accessible, user-friendly content.</p>
                 
@@ -228,7 +181,7 @@
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="#" class="block">
+                            <a href="coursecorrect.html" class="block">
                                 <h4 class="text-lg font-bold leading-tight">Quickstart Guide Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">Comprehensive user guide (3000+ words) for an AI-powered course discovery platform. Created through hands-on platform exploration to help users navigate features and achieve their learning goals.</p>
                             </a>
@@ -237,14 +190,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">Information Architecture</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Quickstart Guide</span>
                             </div>
-                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="coursecorrect.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="#" class="block">
+                            <a href="coursecorrect_troubleshooting_guide.html" class="block">
                                 <h4 class="text-lg font-bold leading-tight">Troubleshooting Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">A comprehensive guide for diagnosing and resolving common user issues within a software platform, focusing on clear, step-by-step instructions and actionable solutions.</p>
                             </a>
@@ -254,14 +207,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">User Support</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Technical Writing</span>
                             </div>
-                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="coursecorrect_troubleshooting_guide.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="#" class="block">
+                            <a href="coursecorrect_FAQ.html" class="block">
                                 <h4 class="text-lg font-bold leading-tight">FAQs Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">A standalone, structured FAQ page designed for quick user self-service, covering common questions on general use, account access, and pricing.</p>
                             </a>
@@ -271,14 +224,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">User Support</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Information Architecture</span>
                             </div>
-                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="coursecorrect_FAQ.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Open Source</span>
                             </div>
-                            <a href="#" class="block">
+                            <a href="https://github.com/sarah-techwriter" class="block">
                                 <h4 class="text-lg font-bold leading-tight">GitHub Portfolio</h4>
                                 <p class="text-xs text-gray-600 mt-1">Curated collection of technical writing projects and documentation samples demonstrating user-focused content creation for complex platforms. This is where I share my work and collaborate on open-source projects.</p>
                             </a>
@@ -288,24 +241,24 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">GitHub Pages</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Open-source Projects</span>
                             </div>
-                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Repository &rarr;</a>
+                            <a href="https://github.com/sarah-techwriter" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Repository &rarr;</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <aside class="space-y-4">
-                <div class="pb-2">
-                    <h2 class="font-serif-display text-xl font-bold">Technology Content Sample Work</h2>
+            
+            <aside id="technology-content" class="lg:col-span-1 space-y-4">
+                <h2 class="font-serif-display text-xl font-bold">Technology Content Sample Work</h2>
+                <div class="border-t border-gray-200 pt-4">
+                    <a href="#" class="block py-4 hover:bg-gray-50 transition-colors">
+                        <h3 class="text-base font-medium leading-tight">Understanding GPU Benchmark Numbers: What FPS Actually Means</h3>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <span>5 min</span>
+                            <span class="mx-2 font-bold">&bull;</span>
+                            <span>with Jane Doe</span>
+                        </div>
+                    </a>
                 </div>
-                <a href="#" class="block py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
-                    <h3 class="text-base font-medium leading-tight">Understanding GPU Benchmark Numbers: What FPS Actually Means</h3>
-                    <div class="flex items-center text-sm text-gray-500 mt-1">
-                        <span>5 min</span>
-                        <span class="mx-2 font-bold">&bull;</span>
-                        <span>with Jane Doe</span>
-                    </div>
-                </a>
             </aside>
         </main>
     </div>
@@ -318,15 +271,15 @@
                     I’m open to discussing technical writing, sharing ideas, or collaborating on documentation projects.
                 </p>
                 <div class="flex items-center space-x-4 text-sm md:text-base">
-                    <a href="mailto:sarah@techwriter.com" class="flex items-center hover:underline">
+                    <a href="mailto:sarahtechwriter@gmail.com" class="flex items-center hover:underline hover:text-white">
                         <i class="fas fa-envelope mr-2"></i>
                         <span>Email</span>
                     </a>
-                    <a href="#" class="flex items-center hover:underline">
+                    <a href="https://github.com/sarah-techwriter" class="flex items-center hover:underline hover:text-white">
                         <i class="fab fa-github mr-2"></i>
                         <span>GitHub</span>
                     </a>
-                    <a href="#" class="flex items-center hover:underline">
+                    <a href="https://www.linkedin.com/in/amaliassarah/" class="flex items-center hover:underline hover:text-white">
                         <i class="fab fa-linkedin-in mr-2"></i>
                         <span>LinkedIn</span>
                     </a>
@@ -342,16 +295,94 @@
                     Let's discuss your documentation challenges first. I prefer to understand your product, users, and specific pain points before creating any project. Send me details about your platform and documentation needs, let's explore how clear articles can transform your user experience.
                 </p>
                 <h3 class="font-bold mb-4 uppercase text-sm tracking-wide">Collaboration Immediately</h3>
-                <a href="#" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold hover:bg-gray-200 transition-colors">
+                <button type="button" id="openModalBtn" class="bg-white text-gray-900 border border-gray-900 font-bold hover:bg-gray-900 hover:text-white inline-block py-3 px-8 rounded-lg transition duration-300">
                     Send Message
-                </a>
+                </button>
             </div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 mt-12 mb-4 text-left text-xs text-gray-500">
-            <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
+            <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- START: MODAL HTML (Placed at the end of the body) -->
+    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <!-- Modal Panel -->
+        <div id="modalPanel" class="w-full max-w-lg rounded-xl shadow-xl p-8 relative bg-white text-gray-900">
+            
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-4 right-4 opacity-60 hover:opacity-100 transition text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <h2 class="font-serif-display text-2xl font-bold mb-6">Contact Me</h2>
+
+            <form action="https://formspree.io/f/xyzdqvaj" method="POST" class="space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2 opacity-80 text-gray-900">Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="Name" placeholder="your name" required 
+                               class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2 bg-gray-100 border-gray-200 text-gray-900 focus:ring-gray-900">
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2 opacity-80 text-gray-900">E-mail <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="E-mail" placeholder="Your E-mail" required
+                               class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2 bg-gray-100 border-gray-200 text-gray-900 focus:ring-gray-900">
+                    </div>
+                </div>
+
+                <!-- Slack/Whatsapp Field -->
+                <div>
+                    <label for="contact_method" class="block text-sm font-medium mb-2 opacity-80 text-gray-900">Slack/Whatsapp</label>
+                    <input type="text" id="contact_method" name="Slack_Whatsapp" placeholder="Slack ID or Whatsapp Number"
+                               class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2 bg-gray-100 border-gray-200 text-gray-900 focus:ring-gray-900">
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-2 opacity-80 text-gray-900">How can I help you? <span class="text-red-500">*</span></label>
+                    <textarea id="message" name="Message" rows="5" placeholder="Type Here..." required
+                                 class="w-full border rounded-lg p-3 transition duration-200 focus:outline-none focus:ring-2 bg-gray-100 border-gray-200 text-gray-900 focus:ring-gray-900"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-right">
+                    <button type="submit" 
+                                 class="bg-gray-900 text-white font-bold py-3 px-8 rounded-lg transition duration-300 hover:bg-white hover:text-gray-900 hover:border-gray-900 border border-transparent">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END: MODAL HTML -->
+
+    <!-- START: MODAL SCRIPT -->
+    <script>
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const contactModal = document.getElementById('contactModal');
+
+        const openModal = () => contactModal.classList.remove('hidden');
+        const closeModal = () => contactModal.classList.add('hidden');
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        contactModal.addEventListener('click', (event) => {
+            // Close modal if background is clicked
+            if (event.target === contactModal) {
+                closeModal();
+            }
+        });
+    </script>
+    <!-- END: MODAL SCRIPT -->
 
 </body>
 </html>
