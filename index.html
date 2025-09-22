@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="icon" type="image/png" href="favicon-32x32.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         html {
             scroll-behavior: smooth;
@@ -21,20 +19,6 @@
         .font-serif-display {
             font-family: 'Merriweather', serif;
         }
-        #contactModal {
-            transition: opacity 0.3s ease-in-out;
-        }
-        #modalPanel {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        }
-        #contactModal.hidden #modalPanel {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-        #contactModal:not(.hidden) #modalPanel {
-            opacity: 1;
-            transform: scale(1);
-        }
     </style>
 </head>
 <body class="bg-white text-gray-900 min-h-screen">
@@ -43,10 +27,10 @@
 
         <header class="fixed top-0 left-0 w-full z-50 bg-white">
             <nav class="max-w-7xl mx-auto flex justify-between items-center py-4 border-b border-gray-200">
-                <a href="#" class="text-2xl font-extrabold tracking-widest">sarah-tech-writer</a>
+                <a href="#" class="text-2xl font-extrabold tracking-widest">sarah-techwriter</a>
                 <div class="hidden sm:flex space-x-6 text-sm font-medium text-gray-500 uppercase tracking-wider">
                     <a href="#featured-work" class="hover:text-gray-900 transition-colors">Technical Documentation</a>
-                    <a href="#technology-content" class="hover:text-gray-900 transition-colors">Technology Content</a>
+                    <a href="#featured-work" class="hover:text-gray-900 transition-colors">Technology Content</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="#get-started" class="inline-block px-4 py-2 border border-gray-900 text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-colors">
@@ -61,6 +45,9 @@
             <h2 class="text-xl md:text-2xl font-medium max-w-xl mb-6">
                 A technical writer specializing in creating comprehensive knowledge bases for SaaS platforms and tech startups. I transform complex software into clear, searchable help centers that reduce support tickets and improve user success.
             </h2>
+            <a href="#" class="inline-block px-6 py-3 bg-gray-900 text-white font-medium hover:bg-gray-700 transition-colors">
+                Portfolio
+            </a>
         </section>
 
         <section class="mb-20 text-left">
@@ -241,7 +228,7 @@
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="coursecorrect.html" class="block">
+                            <a href="#" class="block">
                                 <h4 class="text-lg font-bold leading-tight">Quickstart Guide Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">Comprehensive user guide (3000+ words) for an AI-powered course discovery platform. Created through hands-on platform exploration to help users navigate features and achieve their learning goals.</p>
                             </a>
@@ -250,14 +237,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">Information Architecture</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Quickstart Guide</span>
                             </div>
-                            <a href="coursecorrect.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="coursecorrect_troubleshooting_guide.html" class="block">
+                            <a href="#" class="block">
                                 <h4 class="text-lg font-bold leading-tight">Troubleshooting Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">A comprehensive guide for diagnosing and resolving common user issues within a software platform, focusing on clear, step-by-step instructions and actionable solutions.</p>
                             </a>
@@ -267,14 +254,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">User Support</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Technical Writing</span>
                             </div>
-                            <a href="coursecorrect_troubleshooting_guide.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Completed & Published</span>
                             </div>
-                            <a href="coursecorrect_FAQ.html" class="block">
+                            <a href="#" class="block">
                                 <h4 class="text-lg font-bold leading-tight">FAQs Sample</h4>
                                 <p class="text-xs text-gray-600 mt-1">A standalone, structured FAQ page designed for quick user self-service, covering common questions on general use, account access, and pricing.</p>
                             </a>
@@ -284,14 +271,14 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">User Support</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Information Architecture</span>
                             </div>
-                            <a href="coursecorrect_FAQ.html" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
+                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Project &rarr;</a>
                         </div>
         
                         <div class="py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-2 text-sm text-gray-500 mb-1">
                                 <span class="font-medium text-gray-900">Open Source</span>
                             </div>
-                            <a href="https://github.com/sarah-tech-writer" class="block" target="_blank">
+                            <a href="#" class="block">
                                 <h4 class="text-lg font-bold leading-tight">GitHub Portfolio</h4>
                                 <p class="text-xs text-gray-600 mt-1">Curated collection of technical writing projects and documentation samples demonstrating user-focused content creation for complex platforms. This is where I share my work and collaborate on open-source projects.</p>
                             </a>
@@ -301,12 +288,13 @@
                                 <span class="bg-gray-100 px-2 py-1 rounded">GitHub Pages</span>
                                 <span class="bg-gray-100 px-2 py-1 rounded">Open-source Projects</span>
                             </div>
-                            <a href="https://github.com/sarah-tech-writer" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline" target="_blank">View Repository &rarr;</a>
+                            <a href="#" class="inline-block mt-4 text-sm font-medium text-gray-900 hover:underline">View Repository &rarr;</a>
                         </div>
                     </div>
                 </div>
-            </main>
-        <aside class="space-y-4" id="technology-content">
+            </div>
+
+            <aside class="space-y-4">
                 <div class="pb-2">
                     <h2 class="font-serif-display text-xl font-bold">Technology Content Sample Work</h2>
                 </div>
@@ -319,6 +307,7 @@
                     </div>
                 </a>
             </aside>
+        </main>
     </div>
     
     <footer class="bg-black text-white py-16">
@@ -329,15 +318,15 @@
                     I’m open to discussing technical writing, sharing ideas, or collaborating on documentation projects.
                 </p>
                 <div class="flex items-center space-x-4 text-sm md:text-base">
-                    <a href="mailto:sarahtechwriter@gmail.com" class="flex items-center hover:underline">
+                    <a href="mailto:sarah@techwriter.com" class="flex items-center hover:underline">
                         <i class="fas fa-envelope mr-2"></i>
                         <span>Email</span>
                     </a>
-                    <a href="https://github.com/sarah-tech-writer" class="flex items-center hover:underline" target="_blank">
+                    <a href="#" class="flex items-center hover:underline">
                         <i class="fab fa-github mr-2"></i>
                         <span>GitHub</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/amaliassarah/" class="flex items-center hover:underline" target="_blank">
+                    <a href="#" class="flex items-center hover:underline">
                         <i class="fab fa-linkedin-in mr-2"></i>
                         <span>LinkedIn</span>
                     </a>
@@ -353,94 +342,16 @@
                     Let's discuss your documentation challenges first. I prefer to understand your product, users, and specific pain points before creating any project. Send me details about your platform and documentation needs, let's explore how clear articles can transform your user experience.
                 </p>
                 <h3 class="font-bold mb-4 uppercase text-sm tracking-wide">Collaboration Immediately</h3>
-                <button type="button" id="openModalBtn" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold border border-gray-900 hover:bg-gray-100 transition-colors">
+                <a href="#" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold hover:bg-gray-200 transition-colors">
                     Send Message
-                </button>
+                </a>
             </div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 mt-12 mb-4 text-left text-xs text-gray-500">
-            <p>&copy; 2025 sarah-techwriter. All Rights Reserved.</p>
+            <p>&copy; 2025 sarah-tech-writer. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- START: MODAL HTML -->
-    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-        <!-- Modal Panel -->
-        <div id="modalPanel" class="w-full max-w-lg bg-white shadow-xl p-8 relative">
-            
-            <!-- Close Button -->
-            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            
-            <h2 class="font-serif-display text-2xl font-bold mb-6">Let's Connect</h2>
-
-            <form action="https://formspree.io/f/xyzdqvaj" method="POST" class="space-y-6">
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Name Field -->
-                    <div>
-                        <label for="name" class="block text-sm font-medium mb-2 text-gray-700">Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="name" name="Name" placeholder="your name" required 
-                               class="w-full border border-gray-300 p-3 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900">
-                    </div>
-
-                    <!-- Email Field -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium mb-2 text-gray-700">E-mail <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" name="E-mail" placeholder="Your E-mail" required
-                               class="w-full border border-gray-300 p-3 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900">
-                    </div>
-                </div>
-
-                <!-- Slack/Whatsapp Field -->
-                <div>
-                    <label for="contact_method" class="block text-sm font-medium mb-2 text-gray-700">Slack/Whatsapp</label>
-                    <input type="text" id="contact_method" name="Slack_Whatsapp" placeholder="Slack ID or Whatsapp Number"
-                           class="w-full border border-gray-300 p-3 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900">
-                </div>
-
-                <!-- Message Field -->
-                <div>
-                    <label for="message" class="block text-sm font-medium mb-2 text-gray-700">How can I help you? <span class="text-red-500">*</span></label>
-                    <textarea id="message" name="Message" rows="5" placeholder="Type Here..." required
-                                 class="w-full border border-gray-300 p-3 transition duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900"></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="text-right">
-                    <button type="submit" 
-                            class="inline-block font-bold py-3 px-8 border border-gray-900 transition duration-300 bg-white text-gray-900 hover:bg-gray-100">
-                        Send Message
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- END: MODAL HTML -->
-
-    <!-- START: MODAL SCRIPT -->
-    <script>
-        const openModalBtn = document.getElementById('openModalBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const contactModal = document.getElementById('contactModal');
-
-        const openModal = () => contactModal.classList.remove('hidden');
-        const closeModal = () => contactModal.classList.add('hidden');
-
-        openModalBtn.addEventListener('click', openModal);
-        closeModalBtn.addEventListener('click', closeModal);
-        contactModal.addEventListener('click', (event) => {
-            // Close modal if background is clicked
-            if (event.target === contactModal) {
-                closeModal();
-            }
-        });
-    </script>
-    <!-- END: MODAL SCRIPT -->
 
 </body>
 </html>
